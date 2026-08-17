@@ -68,22 +68,22 @@ const AWARDS = [
 ];
 
 const TEAM = [
-  { n:'Paul Holden', r:'Director', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/01/Paul-Holden-Peak-Architects.jpg' },
-  { n:'Gail Newsome', r:'Finance Director', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/01/Gail-Newsome-Peak-Architects.jpg' },
-  { n:'Oliver Glaves', r:'Associate', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/10/Oliver-Glaves.jpg' },
-  { n:'Alasdair Struthers', r:'Associate', img:'https://peakarchitects.co.uk/wp-content/uploads/2023/10/Alasdair-Struthers-Peak-Architects.jpg' },
-  { n:'Dan Anderson', r:'Senior Architect', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/01/Dan-Anderson-Peak-Architects.jpg' },
-  { n:'Will Beesley', r:'Project Architect', img:'https://peakarchitects.co.uk/wp-content/uploads/2021/07/Will-head-BW.jpg' },
-  { n:'Anna Dawson', r:'Project Architect', img:'https://peakarchitects.co.uk/wp-content/uploads/2023/10/Anna-Dawson-Peak-Architects.jpg' },
-  { n:'Alex Erskine', r:'Project Architect', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/01/Alex-Erskine-Peak-Architects.jpg' },
-  { n:'Jayne Brodie', r:'Finance &amp; Office Manager', img:'https://peakarchitects.co.uk/wp-content/uploads/2020/01/Jayne-Brodie-Peak-Architects.jpg' },
-  { n:'Elizabeth Caulton', r:'Office Manager', img:'https://peakarchitects.co.uk/wp-content/uploads/2023/04/Elizabeth-Caulton-Peak-Architects.jpg' },
-  { n:'Rich Blakey', r:'Marketing Manager', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/10/Rich.jpg.jpg' },
-  { n:'Georgia Marsh', r:'Part 2 Architectural Assistant', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/10/Georgia.jpg.jpg' },
-  { n:'Vicky Robertson', r:'Part 2 Architectural Assistant', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/10/Vicky.jpg-e1760520971201.jpg' },
-  { n:'Katharine Chadwell', r:'Part 2 Architectural Assistant', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/10/Katharine.jpg.jpg' },
-  { n:'Karen Zhou', r:'Part 2 Architectural Assistant', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/01/Karen.jpg' },
-  { n:'Al Newbould', r:'Part 1 Architectural Assistant', img:'https://peakarchitects.co.uk/wp-content/uploads/2025/01/Al.jpg' }
+  { n:'Paul Holden', r:'Director', img:'assets/img/202001-Paul-Holden-Peak-Architects.jpg' },
+  { n:'Gail Newsome', r:'Finance Director', img:'assets/img/202001-Gail-Newsome-Peak-Architects.jpg' },
+  { n:'Oliver Glaves', r:'Associate', img:'assets/img/202010-Oliver-Glaves.jpg' },
+  { n:'Alasdair Struthers', r:'Associate', img:'assets/img/202310-Alasdair-Struthers-Peak-Architects.jpg' },
+  { n:'Dan Anderson', r:'Senior Architect', img:'assets/img/202001-Dan-Anderson-Peak-Architects.jpg' },
+  { n:'Will Beesley', r:'Project Architect', img:'assets/img/202107-Will-head-BW.jpg' },
+  { n:'Anna Dawson', r:'Project Architect', img:'assets/img/202310-Anna-Dawson-Peak-Architects.jpg' },
+  { n:'Alex Erskine', r:'Project Architect', img:'assets/img/202001-Alex-Erskine-Peak-Architects.jpg' },
+  { n:'Jayne Brodie', r:'Finance &amp; Office Manager', img:'assets/img/202001-Jayne-Brodie-Peak-Architects.jpg' },
+  { n:'Elizabeth Caulton', r:'Office Manager', img:'assets/img/202304-Elizabeth-Caulton-Peak-Architects.jpg' },
+  { n:'Rich Blakey', r:'Marketing Manager', img:'assets/img/202510-Rich.jpg.jpg' },
+  { n:'Georgia Marsh', r:'Part 2 Architectural Assistant', img:'assets/img/202510-Georgia.jpg.jpg' },
+  { n:'Vicky Robertson', r:'Part 2 Architectural Assistant', img:'assets/img/202510-Vicky.jpg-e1760520971201.jpg' },
+  { n:'Katharine Chadwell', r:'Part 2 Architectural Assistant', img:'assets/img/202510-Katharine.jpg.jpg' },
+  { n:'Karen Zhou', r:'Part 2 Architectural Assistant', img:'assets/img/202501-Karen.jpg' },
+  { n:'Al Newbould', r:'Part 1 Architectural Assistant', img:'assets/img/202501-Al.jpg' }
 ];
 
 const FAQ = [
@@ -164,8 +164,8 @@ function renderShell() {
       <div class="foot__bot">
         <span>© <span id="yr"></span> Peak Architects. All rights reserved.</span>
         <div class="foot__accred">
-          <img src="https://peakarchitects.co.uk/wp-content/uploads/2026/01/riba_chartered_practice_logo_white_rgb.png" alt="RIBA Chartered Practice">
-          <img src="https://peakarchitects.co.uk/wp-content/uploads/2025/09/arb-architects-registration-board-logo.svg" alt="ARB — Architects Registration Board">
+          <img src="assets/img/202601-riba_chartered_practice_logo_white_rgb.png" alt="RIBA Chartered Practice">
+          <img src="assets/img/202509-arb-architects-registration-board-logo.svg" alt="ARB — Architects Registration Board">
         </div>
         <div style="display:flex;gap:18px">
           <a href="privacy.html">Privacy</a><a href="terms.html">Legal</a>

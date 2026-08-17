@@ -1,0 +1,38 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/projects", "destination": "/projects.html", "permanent": false },
+    { "source": "/about", "destination": "/about.html", "permanent": false },
+    { "source": "/journal", "destination": "/journal.html", "permanent": false },
+    { "source": "/contact", "destination": "/contact.html", "permanent": false },
+    { "source": "/privacy", "destination": "/privacy.html", "permanent": false },
+    { "source": "/terms", "destination": "/terms.html", "permanent": false },
+    { "source": "/projects/:slug", "destination": "/project.html?slug=:slug", "permanent": false },
+    { "source": "/news/:slug", "destination": "/post.html?slug=:slug", "permanent": false },
+    { "source": "/news", "destination": "/journal.html", "permanent": false },
+    { "source": "/about-us", "destination": "/about.html", "permanent": false }
+  ]
+}

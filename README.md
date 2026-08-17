@@ -72,5 +72,33 @@ client testimonials if the Recognition section is to become a Reviews section.
 
 ## Images
 
-Images are referenced from the existing `peakarchitects.co.uk` media library. Before going live,
-move them onto the production host so the site does not depend on the old server.
+All imagery is committed under `assets/img/` — 411 files, ~134 MB. The site is fully self-contained
+and has no runtime dependency on the old server.
+
+Assets were pulled from the existing `peakarchitects.co.uk` media library, downscaled to a maximum
+of 1800px and re-encoded, keeping whichever of the original or processed file was smaller so nothing
+was inflated. A handful of oversized PNG renders were converted to JPEG.
+
+One image referenced by a 2017 news post (`Untitled-1-300x98.jpg`) returns 404 on the source server
+and has been dropped from the dataset.
+
+> Photography is Peak Architects' own. Some sets are credited to an external photographer
+> (Dug Wilders on Somersall House), so confirm redistribution rights before publishing publicly.
+
+## Deploying to Vercel
+
+`vercel.json` is included and the project needs no build step.
+
+- **Framework preset:** Other
+- **Build command:** none
+- **Output directory:** leave as the repository root
+
+The config sets long-lived immutable caching on `assets/img/`, basic security headers, and
+extensionless redirects (`/projects` → `/projects.html`) plus legacy WordPress paths
+(`/projects/:slug` and `/news/:slug`) so old inbound links keep working.
+
+Import the repository at [vercel.com/new](https://vercel.com/new), or from this folder:
+
+```bash
+npx vercel --prod
+```
