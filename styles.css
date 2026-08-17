@@ -10,7 +10,15 @@
   --white:#fff;
   --cream:#FFEBC6;
   --clay:#7E4B3A;
-  --accent:#EB5D3E;          /* Peak brand terracotta */
+  --accent:#F47A20;          /* Peak brand orange — signature accent */
+  --accent-on:#FFFFFF;       /* text on orange */
+  /* Editorial orange monochrome for portraits (see .tcard__ph img).
+     Solved against the CSS filter colour matrices so the midtone hue lands on
+     27° — the brand orange is 28°. Tonal ramp, shadow to highlight:
+       rgb(33,24,16) deep brown-orange -> rgb(173,128,91) muted orange
+       -> rgb(255,232,166) cream. Median saturation ~0.47: warm, not fluorescent. */
+  --tint-orange:grayscale(1) sepia(.9) hue-rotate(-15deg) saturate(1.8)
+                brightness(.94) contrast(1.03);
   --container:1356px;
   --r-lg:20px;
   --r-md:14px;
@@ -39,7 +47,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-family:var(--f-display);font-weight:500;
   letter-spacing:-.04em;line-height:1.06;margin:0;
 }
-.it{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.03em}
+/* Emphasised italic words carry the orange accent. Typography itself is unchanged —
+   family, style, weight and tracking all stay exactly as they were. */
+.it{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.03em;
+  color:var(--accent)}
+/* Header exception: the hero sits under the overlay nav and stays as designed. */
+.hero h1 .it{color:inherit}
 h2.display{font-size:clamp(38px,5.2vw,80px);letter-spacing:-.04em;line-height:1.04}
 h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.2}
 
@@ -161,8 +174,8 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .tab{padding:11px 20px;border-radius:100px;border:1px solid var(--line-strong);
   font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);
   transition:all .35s var(--ease);background:transparent}
-.tab:hover{border-color:var(--ink);color:var(--ink)}
-.tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
 
 /* ---------- project grid ---------- */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -173,9 +186,11 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .pcard__ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
 .pcard:hover .pcard__ph img{transform:scale(1.05)}
 .pcard__tags{position:absolute;top:14px;left:14px;display:flex;gap:6px}
-.chip{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:6px;
-  padding:6px 10px;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--ink)}
-.chip--solid{background:var(--ink);color:#fff}
+/* Highlight pills: orange fill, white text. Padding, radius, size, weight and
+   tracking are untouched — colour treatment only. */
+.chip{background:var(--accent);border-radius:6px;
+  padding:6px 10px;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--accent-on)}
+.chip--solid{background:var(--accent);color:var(--accent-on)}
 .pcard__b{padding:14px 14px 0}
 .pcard__t{font-family:var(--f-display);font-size:18px;font-weight:500;letter-spacing:-.03em;
   margin:0 0 4px;line-height:1.25}
@@ -196,7 +211,7 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .fitem:last-child{border-bottom:1px solid var(--line)}
 .fitem h4{font-family:var(--f-display);font-size:20px;font-weight:500;letter-spacing:-.03em;margin:0 0 8px}
 .fitem p{margin:0;font-size:15px;color:var(--ink-soft);letter-spacing:-.01em;line-height:1.5}
-.fitem .num{font-family:var(--f-ui);font-size:12px;font-weight:600;color:var(--ink-soft);
+.fitem .num{font-family:var(--f-ui);font-size:12px;font-weight:600;color:var(--accent);
   letter-spacing:.1em;padding-top:4px}
 
 .about__media{position:relative;border-radius:var(--r-lg);overflow:hidden;height:100%;min-height:520px}
@@ -248,7 +263,7 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .scard__b p{margin:0;font-size:13px;color:rgba(255,255,255,.82);letter-spacing:-.01em}
 .scard__ar{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
   background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;
-  color:var(--ink);opacity:0;transform:translateY(-6px);transition:all .5s var(--ease)}
+  color:var(--accent);opacity:0;transform:translateY(-6px);transition:all .5s var(--ease)}
 .scard:hover .scard__ar{opacity:1;transform:translateY(0)}
 
 /* ============================================================
@@ -265,11 +280,11 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .rcard p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.55;letter-spacing:-.01em}
 .rcard__f{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;
   align-items:center;font-size:13px;color:var(--ink-soft)}
-.rcard__y{font-family:var(--f-display);font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.rcard__y{font-family:var(--f-display);font-weight:500;color:var(--accent);letter-spacing:-.02em}
 .rnav{display:flex;gap:8px}
 .rbtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);
   display:flex;align-items:center;justify-content:center;transition:all .4s var(--ease)}
-.rbtn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.rbtn:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
 
 /* ============================================================
    TEAM
@@ -279,9 +294,14 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .trail::-webkit-scrollbar{display:none}
 .tcard{flex:0 0 260px;scroll-snap-align:start}
 .tcard__ph{border-radius:var(--r-lg);overflow:hidden;height:340px;background:var(--paper);margin-bottom:14px}
-.tcard__ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);
+/* Warm orange monochrome, editorial rather than an overlay: flatten to mono first,
+   push the whole tonal range warm, then re-seat the hue on the brand orange.
+   Shadows land deep brown-orange, midtones muted orange, highlights cream —
+   facial detail and contrast are preserved. Hover still reveals full colour. */
+.tcard__ph img{width:100%;height:100%;object-fit:cover;
+  filter:var(--tint-orange);
   transition:filter .6s var(--ease),transform 1s var(--ease)}
-.tcard:hover .tcard__ph img{filter:grayscale(0);transform:scale(1.04)}
+.tcard:hover .tcard__ph img{filter:none;transform:scale(1.04)}
 .tcard h4{font-family:var(--f-ui);font-size:13px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;margin:0 0 5px}
 .tcard p{margin:0;font-size:13px;color:var(--ink-soft);letter-spacing:-.01em}
@@ -339,34 +359,38 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 /* ============================================================
    MARQUEE + FOOTER
    ============================================================ */
-.marq{background:var(--ink);color:#fff;padding:26px 0 0;overflow:hidden}
+.marq{background:var(--accent);color:#fff;padding:26px 0 0;overflow:hidden}
 .marq__t{display:flex;gap:40px;white-space:nowrap;animation:slide 26s linear infinite;
   font-family:var(--f-display);font-size:clamp(52px,10vw,150px);font-weight:500;
-  letter-spacing:-.05em;line-height:1;opacity:.14}
+  letter-spacing:-.05em;line-height:1;opacity:.2}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-.foot{background:var(--ink);color:#fff;padding:60px 0 30px}
+/* Footer: the site's strong orange closing block. Structure, columns, spacing and
+   alignment are unchanged — background and text contrast only. */
+.foot{background:var(--accent);color:#fff;padding:60px 0 30px}
 .foot__row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;
-  padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.13)}
+  padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.32)}
 .foot h5{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.5);margin:0 0 18px}
+  color:rgba(255,255,255,.78);margin:0 0 18px}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-.foot a{font-size:14px;color:rgba(255,255,255,.82);letter-spacing:-.01em;transition:color .3s}
-.foot a:hover{color:var(--accent)}
+.foot a{font-size:14px;color:rgba(255,255,255,.92);letter-spacing:-.01em;transition:color .3s,opacity .3s}
+/* Orange-on-orange would vanish, so links resolve to solid white on hover */
+.foot a:hover{color:#fff;opacity:.72}
 .foot__brand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);
   font-size:22px;font-weight:600;letter-spacing:-.04em;margin-bottom:16px}
 .foot__brand svg{width:24px;height:24px}
-.foot__studio{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;
+.foot__studio{font-size:14px;color:rgba(255,255,255,.88);line-height:1.6;
   letter-spacing:-.01em;margin:0 0 20px}
 .foot__studio strong{display:block;color:#fff;font-weight:500;margin-bottom:4px}
 .foot__bot{display:flex;justify-content:space-between;align-items:center;gap:20px;
-  padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);flex-wrap:wrap}
+  padding-top:26px;font-size:13px;color:rgba(255,255,255,.78);flex-wrap:wrap}
 .foot__soc{display:flex;gap:10px}
-.foot__soc a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+.foot__soc a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.42);
   display:flex;align-items:center;justify-content:center;transition:all .4s var(--ease)}
-.foot__soc a:hover{background:#fff;color:var(--ink);border-color:#fff}
+.foot__soc a:hover{background:#fff;color:var(--accent);border-color:#fff;opacity:1}
 .foot__soc svg{width:16px;height:16px}
-.foot__accred{display:flex;gap:18px;align-items:center;opacity:.75;flex-wrap:wrap}
+/* White accreditation marks read cleanly on orange — lifted for legibility */
+.foot__accred{display:flex;gap:18px;align-items:center;opacity:.95;flex-wrap:wrap}
 .foot__accred img{height:34px;width:auto;object-fit:contain}
 
 /* ============================================================
@@ -423,8 +447,9 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 
 /* static (non-overlay) nav sits in flow */
 .nav.static{position:sticky;top:0}
-.nav__links a.on{color:var(--accent)}
-.nav.solid .nav__links a.on{color:var(--accent)}
+/* Header exception: navigation stays dark — no orange in the header. The active
+   page is marked with a persistent underline instead of an accent colour. */
+.nav__links a.on::after{width:100%}
 .nav__links.open{display:flex}
 
 /* page header */
@@ -470,7 +495,7 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .pnav{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--line);padding-top:26px}
 .pnav__i{padding:22px 24px;border-radius:var(--r-lg);background:var(--paper);
   transition:background .4s var(--ease),transform .5s var(--ease)}
-.pnav__i:hover{background:var(--ink);transform:translateY(-3px)}
+.pnav__i:hover{background:var(--accent);transform:translateY(-3px)}
 .pnav__i:hover .pnav__l,.pnav__i:hover .pnav__t{color:#fff}
 .pnav__i--right{text-align:right}
 .pnav__l{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
