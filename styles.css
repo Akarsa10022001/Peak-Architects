@@ -12,6 +12,7 @@
   --clay:#7E4B3A;
   --accent:#F47A20;          /* Peak brand orange — signature accent */
   --accent-on:#FFFFFF;       /* text on orange */
+  --logo-ink:#4A4A4A;        /* wordmark grey from the practice's logo */
   /* Editorial orange monochrome for portraits (see .tcard__ph img).
      Solved against the CSS filter colour matrices so the midtone hue lands on
      27° — the brand orange is 28°. Tonal ramp, shadow to highlight:
@@ -92,10 +93,19 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 }
 .nav.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--line)}
-.nav__brand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);
-  font-weight:600;font-size:20px;letter-spacing:-.04em;color:#fff;transition:color .4s}
-.nav.solid .nav__brand{color:var(--ink)}
-.nav__mark{width:22px;height:22px;flex:none}
+.nav__brand{display:flex;align-items:center;color:#fff;transition:color .4s}
+.nav.solid .nav__brand{color:var(--logo-ink)}
+
+/* ---------- logo ----------
+   The wordmark inherits currentColor from its container, so the same markup
+   serves the transparent header (white over photography), the solid header
+   (brand grey) and the orange footer (white). */
+.pklogo{display:block;height:26px;width:auto;flex:none}
+.pklogo__word{fill:currentColor}
+.pklogo__mark{fill:var(--accent)}
+.nav__brand .pklogo{height:24px}
+/* On the orange footer the chevron would vanish, so it resolves to white */
+.foot__brand .pklogo__mark{fill:#fff}
 .nav__links{display:flex;gap:34px;align-items:center}
 .nav__links a{font-size:14px;font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.92);
   transition:color .3s,opacity .3s;position:relative}
@@ -376,9 +386,8 @@ h3.display{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;line-height:1.
 .foot a{font-size:14px;color:rgba(255,255,255,.92);letter-spacing:-.01em;transition:color .3s,opacity .3s}
 /* Orange-on-orange would vanish, so links resolve to solid white on hover */
 .foot a:hover{color:#fff;opacity:.72}
-.foot__brand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);
-  font-size:22px;font-weight:600;letter-spacing:-.04em;margin-bottom:16px}
-.foot__brand svg{width:24px;height:24px}
+.foot__brand{display:flex;align-items:center;margin-bottom:16px;color:#fff}
+.foot__brand .pklogo{height:30px}
 .foot__studio{font-size:14px;color:rgba(255,255,255,.88);line-height:1.6;
   letter-spacing:-.01em;margin:0 0 20px}
 .foot__studio strong{display:block;color:#fff;font-weight:500;margin-bottom:4px}
